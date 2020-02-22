@@ -96,7 +96,7 @@ function startQuiz(){
   question1.hidden = false;
   question1Body.hidden = false;
 
-  button.forEach(function (button){addEventListener("click", questionChange(this))});
+  //button.forEach(function (button){addEventListener("click", questionChange(this))});
 
   timerStart();
 };
