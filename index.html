@@ -12,14 +12,65 @@
 
 <body>
     <header>
-        <span class="HighScoreLink lext-left">View High Scores</span>
-        <span class="text-right">Time:<span class="time">0</span></span>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand highScores" href="#">High Scores</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav mr-auto">
+                <li >
+                  <a></a>
+                </li>
+                <li>
+                  <a></a>
+                </li>
+                <li>
+                  <a></a>
+                </li>
+              </ul>
+              <span class="navbar-text">
+                Time Remaining: <span class="time">0</span>
+              </span>
+            </div>
+          </nav>    
     </header>
-
+    <br>
     <div class="jumbotron col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center">
-        <h1 class="display-4 headQuestion">CODING QUIZ!</h1>
-        <p class="lead answerList">Click the button below to start the quiz! You will have 75 seconds to start, and every answer will
+        <h1 class="display-4 intro">CODING QUIZ!</h1>
+        <p class="lead introBody">Click the button below to start the quiz! You will have 75 seconds to start, and every answer will
             add or subtract from the timer depending on if your answer is wrong or right. 
+        </p>
+        <h1 class="display-4 question1" hidden>Question Uno!</h1>
+        <div class="list-group question1Body" hidden>
+            <button type="button" class="list-group-item list-group-item-action button incorrect">Dapibus ac facilisis in</button>
+            <button type="button" class="list-group-item list-group-item-action button correct">Morbi leo risus</button>
+            <button type="button" class="list-group-item list-group-item-action button incorrect">Porta ac consectetur ac</button>
+            <button type="button" class="list-group-item list-group-item-action button incorrect">Vestibulum at eros</button>
+        </div>
+        <h1 class="display-4 question2" hidden>CODING QUIZ!</h1>
+        <div class="list-group question2" hidden>
+            <button type="button" class="list-group-item list-group-item-action button ">Dapibus ac facilisis in</button>
+            <button type="button" class="list-group-item list-group-item-action button ">Morbi leo risus</button>
+            <button type="button" class="list-group-item list-group-item-action button ">Porta ac consectetur ac</button>
+            <button type="button" class="list-group-item list-group-item-action button ">Vestibulum at eros</button>
+        </div>
+        <h1 class="display-4 question3" hidden>CODING QUIZ!</h1>
+        <div class="list-group question3" hidden>
+            <button type="button" class="list-group-item list-group-item-action button ">Dapibus ac facilisis in</button>
+            <button type="button" class="list-group-item list-group-item-action button ">Morbi leo risus</button>
+            <button type="button" class="list-group-item list-group-item-action button ">Porta ac consectetur ac</button>
+            <button type="button" class="list-group-item list-group-item-action button ">Vestibulum at eros</button>
+        </div>
+        <h1 class="display-4 question4" hidden>CODING QUIZ!</h1>
+        <div class="list-group question4" hidden>
+            <button type="button" class="list-group-item list-group-item-action button ">Dapibus ac facilisis in</button>
+            <button type="button" class="list-group-item list-group-item-action button ">Morbi leo risus</button>
+            <button type="button" class="list-group-item list-group-item-action button ">Porta ac consectetur ac</button>
+            <button type="button" class="list-group-item list-group-item-action button ">Vestibulum at eros</button>
+        </div>
+        <h1 class="display-4 gameover" hidden>Game Over!</h1>
+        <p class="lead gameoverBody" hidden>You ran out of time! 
         </p>
         <hr class="my-4">
         <p class="answerResult"></p>

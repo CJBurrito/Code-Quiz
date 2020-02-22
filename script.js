@@ -1,28 +1,41 @@
 var time = document.querySelector(".time");
-var questionSpace = document.querySelector(".headQuestion");
+var intro = document.querySelector(".intro");
+var introBody = document.querySelector(".introBody");
+var question1 = document.querySelector(".question1")
+var question1Body = document.querySelector(".question1Body")
+var question2 = document.querySelector(".question1")
+var question2Body = document.querySelector(".question1Body")
+var question3 = document.querySelector(".question1")
+var question3Body = document.querySelector(".question1Body")
+var question4 = document.querySelector(".question1")
+var question4Body = document.querySelector(".question1Body")
 var startButton = document.querySelector(".startButton");
-var answerList = document.querySelector(".answerList");
-var result = document.querySelector(".answerResult")
+var gameover = document.querySelector(".gameover");
+var gameoverBody = document.querySelector(".gameoverBody");
+var result = document.querySelector(".answerResult");
+var button = document.querySelectorAll("button");
 
-var timeLeft = 75
-var question1 = ["This is a question?", "answer 1", "answer 2", "answer 3", "answer 4"];
-var question2 = [];
-var question3 = [];
-var question4 = [];
+console.log(button);
+console.log(intro);
+console.log(question1);
+
+var timeLeft = 0
 
 function timerStart() {
+  timeLeft += 10;
   var timerInterval = setInterval(function() {
     timeLeft--;
     time.textContent = timeLeft;
 
-    if(timeLeft === 0) {
+    if(timeLeft <= 0) {
       clearInterval(timerInterval);
+      gameOver();
     }
 
   }, 1000);
 }
 
-function correctAnswer() {
+ function correctAnswer() {
   timeLeft = timeLeft + 10;
   result.innerHTML = "Correct!"
   setTimeout(function() 
@@ -38,95 +51,54 @@ function incorrectAnswer() {
     3000);
 }
 
-function questionChange1() {
-  questionSpace.innerHTML = question1[0];
-  var answerPool = document.createElement("ul");
+function questionChange(item) {
+  console.log(this);
 
-  var answer1 = document.createElement("li");
-  var button1 = document.createElement("button");
-  button1.innerHTML = question1[1];
-  answer1.appendChild(button1);
+if (item.classList.contains("correct")) {
+  correctAnswer();
+}
 
-  var answer2 = document.createElement("li");
-  var button2 = document.createElement("button");
-  button2.innerHTML = question1[2];  
-  answer2.appendChild(button2);
+else {
+  incorrectAnswer();
+}};
 
-  var answer3 = document.createElement("li");
-  var button3 = document.createElement("button");
-  button3.innerHTML = question1[3];
-  answer3.appendChild(button3);
+function hideQuestions() {
+  question1.hidden = true;
+  question1Body.hidden = true;
+  question2.hidden = true;
+  question2Body.hidden = true;
+  question3.hidden = true;
+  question3Body.hidden = true;
+  question4.hidden = true;
+  question4Body.hidden = true;
+  gameover.hidden = true;
+  gameoverBody.hidden = true;
+}
 
-  var answer4 = document.createElement("li");
-  var button4 = document.createElement("button");
-  button4.innerHTML = question1[4];
-  answer4.appendChild(button4);
-
-  answerPool.appendChild(answer1);
-  answerPool.appendChild(answer2);
-  answerPool.appendChild(answer3);
-  answerPool.appendChild(answer4);
-
-  answerList.innerHTML = "";
-  answerList.appendChild(answerPool);
-
-  startButton.remove();
-
-  button1.addEventListener("click", function() {incorrectAnswer(); QuestionChange2()});
-  button2.addEventListener("click", function() {correctAnswer(); QuestionChange2()});
-  button3.addEventListener("click", function() {incorrectAnswer(); QuestionChange2()});
-  button4.addEventListener("click", function() {incorrectAnswer(); QuestionChange2()});
-};
-
-function QuestionChange2(){
-  var UL = document.getElementsByTagName("ul");
-  UL.remove();
-
-  questionSpace.innerHTML = question1[0];
-  var answerPool = document.createElement("ul");
-
-  var answer1 = document.createElement("li");
-  var button1 = document.createElement("button");
-  button1.innerHTML = question1[1];
-  answer1.appendChild(button1);
-
-  var answer2 = document.createElement("li");
-  var button2 = document.createElement("button");
-  button2.innerHTML = question1[2];  
-  answer2.appendChild(button2);
-
-  var answer3 = document.createElement("li");
-  var button3 = document.createElement("button");
-  button3.innerHTML = question1[3];
-  answer3.appendChild(button3);
-
-  var answer4 = document.createElement("li");
-  var button4 = document.createElement("button");
-  button4.innerHTML = question1[4];
-  answer4.appendChild(button4);
-
-  answerPool.appendChild(answer1);
-  answerPool.appendChild(answer2);
-  answerPool.appendChild(answer3);
-  answerPool.appendChild(answer4);
-
-  answerList.innerHTML = "";
-  answerList.appendChild(answerPool);
-
-  startButton.remove();
-
-  button1.addEventListener("click", incorrectAnswer);
-  button2.addEventListener("click", correctAnswer);
-  button3.addEventListener("click", incorrectAnswer);
-  button4.addEventListener("click", incorrectAnswer);
-
-};
+function gameOver() {
+  timeLeft = 0;
+  hideQuestions();
+  gameover.hidden = false;
+  gameoverBody.hidden = false;
+  startButton.hidden = false;
+}
 
 //Start Quiz function. Starts quiz questions and timer.
 function startQuiz(){
-  questionChange1();
-  timerStart();
+  intro.hidden = true;
+  introBody.hidden = true;
+  startButton.hidden = true;
+  hideQuestions();
 
+  console.log(intro);
+  console.log(introBody);
+
+  question1.hidden = false;
+  question1Body.hidden = false;
+
+  button.forEach(function (button){addEventListener("click", questionChange(this))});
+
+  timerStart();
 };
 
 
